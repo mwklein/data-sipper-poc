@@ -1,5 +1,5 @@
-# Data Sipper (Proof of Concept)
-A simple proof of concept application to send connect to distributed data sources across multiple organizations, and send to a centralized database in a public cloud. 
+# Data Sipper API (Proof of Concept)
+A simple proof of concept application connect to distributed data sources across multiple organizations, and send to a centralized database in a public cloud. This project provides the central server including an RESTful API to receive data and store it in a Dynamo database. 
 
 # Serverless Framework
 ## Install serverless framework
