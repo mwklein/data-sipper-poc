@@ -6,17 +6,12 @@ const dynamodb = require('./dynamodb');
 module.exports.append = (event, context, callback) => {
   const timestamp = new Date().getTime();
   const data = JSON.parse(event.body);
-  if (typeof data.text !== 'string') {
-    console.error('Validation Failed');
-    callback(new Error('Couldn\'t append the data.'));
-    return;
-  }
 
   const params = {
     TableName: process.env.DYNAMODB_TABLE,
     Item: {
       id: uuid.v1(),
-      text: data.text,
+      data: data,
       checked: false,
       createdAt: timestamp,
       updatedAt: timestamp,
