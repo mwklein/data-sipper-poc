@@ -6,6 +6,7 @@ const dynamodb = require('./dynamodb');
 module.exports.append = (event, context, callback) => {
   const timestamp = new Date().getTime();
   const data = JSON.parse(event.body);
+  console.log(data);
 
   const params = {
     TableName: process.env.DYNAMODB_TABLE,
@@ -17,12 +18,13 @@ module.exports.append = (event, context, callback) => {
       updatedAt: timestamp,
     },
   };
+  console.log(params);
 
-  // write the todo to the database
+  // write to the database
   dynamodb.put(params, (error) => {
     // handle potential errors
     if (error) {
-      console.error(error);
+      console.log(error);
       callback(new Error('Couldn\'t append the data.'));
       return;
     }
